@@ -224,7 +224,36 @@ img {
     font-weight: bolder;
 }
 
-.main p {
+.main{
     font-size: 1.2rem;
     font-weight: 600;
+}
+
+.main p {
+    margin: 0;
+}
+
+.tempInformation {
+    display: grid;
+    background-color: var(--main-bg);
+    color: #fff;
+
+    width: 30rem;
+    padding: 2rem;
+    border-radius: 2rem;
+}
+
+.top_layer {
+    display: flex;
+    justify-content: space-between;
+}
+
+.result {
+    display: flex;
+    justify-content: space-around;
+    place-items: center;
+}
+
+.temp {
+    font-size: 4rem;
 }
