@@ -1,5 +1,5 @@
 const getDay = () => {
-    let weekdays = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT']
+    let weekdays = ['SUNDAY', 'MONDAY', 'TUESDAY', 'WEDNESDAY', 'THURSDAY', 'FRIDAY', 'SATURDAY']
     let date = new Date()
     return weekdays[date.getDay()]
 }
@@ -15,8 +15,8 @@ const getDate = () => {
     return date.getDate()
 }
 
-const day = document.getElementById(day)
-const date = document.getElementById(today_date)
+const day = document.getElementById('day')
+const date = document.getElementById('today_date')
 
 day.innerHTML = getDay()
-date.innerHTML = `${getDate} ${getMonth}`
+date.innerHTML = `${getDate()} ${getMonth()}`
