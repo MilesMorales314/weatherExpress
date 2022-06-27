@@ -48,7 +48,7 @@ app.get('/weather', (req, res) => {
                 // console.log(l, objData.weather)
 
                 res.render('weather', {
-                    output_status: '',
+                    output_status: `${objData.name}, ${objData.sys.country}`,
                     temp: Math.round((objData.main.temp-273.05)*100)/100,
                     weather_status: objData.weather[l].main,
                 })
