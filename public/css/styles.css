@@ -157,6 +157,10 @@ img {
     width: auto;
 }
 
+.row {
+    overflow-y: hidden !important;
+}
+
 /* about page */
 
 .about img {
