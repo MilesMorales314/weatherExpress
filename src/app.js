@@ -5,7 +5,7 @@ const bodyParser = require('body-parser')
 const requests = require('requests')
 
 const app = express()
-const port = process.env.PORT || 8001
+const port = process.env.PORT || 8000
 const static_path = path.join(__dirname, '../public')
 const templates_path = path.join(__dirname, '../templates/views')
 const partials_path = path.join(__dirname, '../templates/partials')
@@ -33,7 +33,7 @@ const default_obj = {
 }
 
 app.get('/weather', (req, res) => {
-    if (req.query) {
+    if (req.query.cityname) {
         const cityname = req.query.cityname
         const api = `https://api.openweathermap.org/data/2.5/weather?q=${cityname}&appid=e56df4762281a3442e899211379f93e3&&units=metric`
         
@@ -53,9 +53,16 @@ app.get('/weather', (req, res) => {
                     weather_status: objData.weather[l].main,
                 })
             }
-            else {
+            else if (objData.cod === 404) {
                 const revert = default_obj.output_status
                 default_obj.output_status = 'Please enter the correct city name'
+        
+                res.render('weather', default_obj)
+        
+                default_obj.output_status = revert
+            } else if (objData.cod >= 500) {
+                const revert = default_obj.output_status
+                default_obj.output_status = 'Could not access the data. Try again later.'
         
                 res.render('weather', default_obj)
         
