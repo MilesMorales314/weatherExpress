@@ -35,7 +35,7 @@ const default_obj = {
 app.get('/weather', (req, res) => {
     if (req.query) {
         const cityname = req.query.cityname
-        const api = `https://api.openweathermap.org/data/2.5/weather?q=${cityname}&appid=e56df4762281a3442e899211379f93e3`
+        const api = `https://api.openweathermap.org/data/2.5/weather?q=${cityname}&appid=e56df4762281a3442e899211379f93e3&&units=metric`
         
         requests(api)
 
@@ -49,7 +49,7 @@ app.get('/weather', (req, res) => {
 
                 res.render('weather', {
                     output_status: `${objData.name}, ${objData.sys.country}`,
-                    temp: Math.round((objData.main.temp-273.05)*100)/100,
+                    temp: Math.round((objData.main.temp)*100)/100,
                     weather_status: objData.weather[l].main,
                 })
             }
